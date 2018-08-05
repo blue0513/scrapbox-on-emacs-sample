@@ -1,0 +1,21 @@
+#!/bin/bash
+
+response=$(curl -s "[Your Request]")
+# [Your Request]: "https://scrapbox.io/api/pages/[PROJECT_NAME]/search/titles"
+
+# If You want to access private project, Plz do a bit hack as follows
+# On Chrome, You can get Request as cURL format
+# 1. Open dev tool network tab
+# 2. Right Click the Target Request
+# 3. Select: Copy as cURL
+# 4. Replace the Target Page Name to ${page}
+# Ex: "https://scrapbox.io/api/pages/YOUR_PROJECT_NAME/search/titles" -H .... 'Cache-Control: no-cache' --compressed
+# 5. Write it as [Your Request] on $response
+
+raw_descriptions=$(echo $response | jq '.[] | .title')
+descriptions=$(echo $raw_descriptions | sed 's/"//g')
+
+for i in ${descriptions[@]}
+do
+    echo $i
+done
