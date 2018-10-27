@@ -24,6 +24,27 @@ response=$(curl -s "[Your Request]")
 
 #### 3. Execute
 
++ Get Page Titles
 ```el
 M-x my-index-scrapbox
 ```
+
++ Get Page Body
+
+```el
+M-x my-index-scrapbox RET [YOUR_PAGE_NAME]
+```
+
++ Post Page Body
+
+After selecting region, execute
+
+```el
+M-x my-post-scrapbox RET [YOUR_PAGE_NAME]
+```
+
+## Hack for private page
+
+If you want to access your private project, plz do a bit hack.
+
+See the comment on: `get_scrapbox_page.sh`
